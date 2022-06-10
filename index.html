@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bosnian Landmarks</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-fixed-top">
+        <div id="navText" class="container">
+            <div class="navbar-header">
+                <a href="#" class="navbar-brand">
+                    <img src="img/logo_flag.png" width="45" alt="" class="d-inline-block align-middle mr-2"
+                        onclick="refreshPage()">
+                    <span class=" font-weight-bold" onclick="refreshPage()">Bosnian Landmarks</span>
+                </a>
+            </div>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active"><a href="index.html" class="nav-link">Home<span
+                            class="sr-only">(current)</span></a></li>
+                <!--
+                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>-->
+            </ul>
+        </div>
+    </nav>
+
+    <header>
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item"
+                src="https://www.youtube.com/embed/U8n8b7fT8L0?autoplay=1&mute=1&playsinline=1&loop=1&playlist=U8n8b7fT8L0"
+                allowfullscreen></iframe>
+        </div>
+        <div class="overlay">
+            <div class="container h-100">
+                <div class="d-flex h-100 text-center align-items-center">
+                    <div class="w-100 text-white">
+                        <h1 class="display-1">WELCOME</h1>
+                        <p class="lead mb-0">Bosnia and Herzegovina landmarks</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container" id="prikaz">
+        <div class="row">
+            <div class="arrow" id="arrows">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container sadrzaj">
+        <div class="row">
+            <div id="exTab1" class="container">
+                <div class="row" id="tabs">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#1a" class="btn btn-lg" onclick="loadList('Mountains','1a')"
+                                data-toggle="tab">Mountains</a>
+                        </li>
+                        <li><a href="#2a" class="btn btn-lg" onclick="loadList('Lakes','2a')"
+                                data-toggle="tab">Lakes</a>
+                        </li>
+                        <li><a href="#3a" class="btn btn-lg" onclick="loadList('Waterfalls','3a')"
+                                data-toggle="tab">Waterfalls</a>
+                        </li>
+                        <li><a href="#4a" class="btn btn-lg" onclick="loadList('National Parks','4a')"
+                                data-toggle="tab">National Parks</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-content clearfix">
+                    <div class="tab-pane fade in active" id="1a">
+                        <div class="row" id="content">
+
+
+                        </div>
+
+                    </div>
+                    <div class="tab-pane fade in" id="2a">
+                        <div class="row">
+                            <h1>Lakes</h1>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade in" id="3a">
+                        <div class="row">
+                            <h1>Waterfalls</h1>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade in" id="4a">
+                        <div class="row">
+                            <h1>National Parks</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal Treskavica-->
+    <div class="modal fade" id="treskavica" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLongTitle">Treskavica</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modalFromJSON">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Bjelasnica-->
+    <div class="modal fade" id="bjelasnica" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLongTitle">Bjelasnica</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Jahorina-->
+    <div class="modal fade" id="jahorina" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLongTitle">Jahorina</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Vlasic-->
+    <div class="modal fade" id="vlasic" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLongTitle">Vlasic</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+
+    <div class="container">
+        <div class="map-responsive">
+            <iframe src="https://www.google.com/maps/d/embed?mid=1HqlkjL-naPFfi8lU7OqPpL8fG5KoQEA&hl=en&ehbc=2E312F"
+                width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+    </div>
+    <br>
+    <!-- ---------------------------Weather widget----------------------------- -->
+    <div class="row">
+        <div class="container">
+            <div class="col-sm-3">
+                <a class="weatherwidget-io" href="https://forecast7.com/en/43d8618d41/sarajevo/" data-label_1="SARAJEVO"
+                    data-theme="original">SARAJEVO</a>
+                <script>
+                    !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
+                </script>
+            </div>
+            <div class="col-sm-3">
+                <a class="weatherwidget-io" href="https://forecast7.com/en/44d7717d19/banja-luka/"
+                    data-label_1="BANJA LUKA" data-theme="original">BANJA LUKA</a>
+                <script>
+                    !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
+                </script>
+            </div>
+            <div class="col-sm-3">
+                <a class="weatherwidget-io" href="https://forecast7.com/en/42d7118d35/trebinje/" data-label_1="TREBINJE"
+                    data-theme="original">TREBINJE</a>
+                <script>
+                    !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
+                </script>
+            </div>
+            <div class="col-sm-3">
+                <a class="weatherwidget-io" href="https://forecast7.com/en/44d7619d22/bijeljina/"
+                    data-label_1="BIJELJINA" data-theme="original">BIJELJINA</a>
+                <script>
+                    !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
+                </script>
+            </div>
+        </div>
+    </div>
+    <br>
+
+
+</body>
+<footer>
+    <div class="row">
+        <div class="container-fluid">
+            <div class="zavrsni">
+                <p>Copyright © 2022 Zorana, Jelena</p>
+            </div>
+        </div>
+    </div>
+    <script async src="/js/javascript.js"></script>
+    <script async src="/js/attention.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/js/reader.js"></script>
+</footer>
+
+</html>
